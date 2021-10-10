@@ -1,0 +1,27 @@
+@page "/"
+@inject AuthenticationStateProvider _stateProvider
+
+<AuthorizeView>
+    <Authorized>
+        <div class="center">
+
+            <h2 style="text-align: center">
+                Hello @context.User.Identity.Name!
+                <h6>
+                    (security level @context.User.FindFirst(claim => claim.Type.Equals("SecurityLevel")).Value -
+                    @context.User.FindFirst(claim => claim.Type.Equals("Role")).Value)
+                </h6>
+                <br/>
+            </h2>
+        </div>
+        <h5 style="text-align: center">Welcome, please check out our <a href="/adults">adults</a> page :)</h5>
+
+    </Authorized>
+    <NotAuthorized>
+        <div class="center">
+            <h2 style="text-align: center">Hello stranger!</h2>
+        </div>
+        <br/>
+        <h5 style="text-align: center">Unfortunately you cannot view this website, please register at our office if you wish to become a member :)</h5>
+    </NotAuthorized>
+</AuthorizeView>

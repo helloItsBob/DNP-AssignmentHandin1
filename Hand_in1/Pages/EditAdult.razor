@@ -1,0 +1,90 @@
+﻿@page "/Edit/{Id:int}"
+@using Hand_in1.Persistence
+@using Hand_in1.Models
+@inject FileContext _fileContext
+@inject NavigationManager _navigationManager
+
+
+@if (adultToEdit == null)
+{
+    <em>Adult not found!</em>
+}
+else
+{
+    <EditForm Model="@adultToEdit" OnValidSubmit="@Save">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <div id="form-container">
+            <div id="left">
+                <div class="form-group">
+                    First name: <br/>
+                    <InputText @bind-Value="adultToEdit.FirstName"/>
+                </div>
+                <div class="form-group">
+                    Last name: <br/>
+                    <InputText @bind-Value="adultToEdit.LastName"/>
+                </div>
+                <div class="form-group">
+                    Hair color: <br/>
+                    <InputText @bind-Value="adultToEdit.HairColor"/>
+                </div>
+                <div class="form-group">
+                    Eye color: <br/>
+                    <InputText @bind-Value="adultToEdit.EyeColor"/>
+                </div>
+                <div class="form-group">
+                    Age: <br/>
+                    <InputNumber @bind-Value="adultToEdit.Age"/>
+                </div>
+            </div>
+            <div id="right">
+                <div class="form-group">
+                    Weight: <br/>
+                    <InputNumber @bind-Value="adultToEdit.Weight"/>
+                </div>
+                <div class="form-group">
+                    Height: <br/>
+                    <InputNumber @bind-Value="adultToEdit.Height"/>
+                </div>
+                <div class="form-group">
+                    Sex: <br/>
+                    <InputText @bind-Value="adultToEdit.Sex"/>
+                </div>
+                <div class="form-group">
+                    Jobtitle: <br/>
+                    <InputText @bind-Value="adultToEdit.JobTitle.JobTitle"/>
+                </div>
+                <div class="form-group">
+                    Salary: <br/>
+                    <InputNumber @bind-Value="adultToEdit.JobTitle.Salary"/>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="btn-center">
+        <p class="actions">
+            <button class="btn btn-outline-dark" type="submit">Save changes</button>
+        </p>
+        </div>
+    </EditForm>
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private Adult adultToEdit;
+
+    protected override async Task OnInitializedAsync()
+    {
+        adultToEdit = _fileContext.Get(Id);
+    }
+
+    private void Save()
+    {
+        _fileContext.EditAdult(adultToEdit);
+        _navigationManager.NavigateTo("/Adults");
+    }
+
+}

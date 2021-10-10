@@ -1,0 +1,82 @@
+﻿@page "/addAdult"
+@using Hand_in1.Persistence
+@using Hand_in1.Models
+@inject FileContext _fileContext
+@inject NavigationManager _navigationManager
+@attribute [Authorize(Policy = "SecurityLevel2")]
+
+<EditForm Model="@_newAdultItem" OnValidSubmit="@AddNewAdult">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <div id="form-container">
+        <div id="left">
+            <div class="form-group">
+                Name: <br/>
+                <InputText @bind-Value="_newAdultItem.FirstName"/>
+            </div>
+            <div class="form-group">
+                Surname: <br/>
+                <InputText @bind-Value="_newAdultItem.LastName"/>
+            </div>
+            <div class="form-group">
+                Hair-color: <br/>
+                <InputText @bind-Value="_newAdultItem.HairColor"/>
+            </div>
+            <div class="form-group">
+                Eye-color: <br/>
+                <InputText @bind-Value="_newAdultItem.EyeColor"/>
+            </div>
+            <div class="form-group">
+                Age: <br/>
+                <InputNumber @bind-Value="_newAdultItem.Age"/>
+            </div>
+        </div>
+        <div id="right">
+            <div class="form-group">
+                Weight: <br/>
+                <InputNumber @bind-Value="_newAdultItem.Weight"/>
+            </div>
+            <div class="form-group">
+                Height: <br/>
+                <InputNumber @bind-Value="_newAdultItem.Height"/>
+            </div>
+            <div class="form-group">
+                Sex: <br/>
+                <InputSelect @bind-Value="_newAdultItem.Sex" style="width: 200px">
+                    @foreach (var gender in Enum.GetValues(typeof(Gender)))
+                    {
+                        <option value="@gender">@gender</option>
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                JobTitle: <br/>
+                <InputText @bind-Value="_newAdultItem.JobTitle.JobTitle"/>
+            </div>
+            <div class="form-group">
+                Salary: <br/>
+                <InputNumber @bind-Value="_newAdultItem.JobTitle.Salary"/>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="btn-center">
+        <p class="actions">
+            <button class="btn btn-outline-dark" type="submit">Create New Adult</button>
+        </p>
+    </div>
+</EditForm>
+
+@code {
+
+    private Adult _newAdultItem = new Adult() {JobTitle = new Job(), Sex = "M"}; // simultaneously creates Job object 
+    //and defaults Sex value
+
+    private void AddNewAdult()
+    {
+        _fileContext.AddAdult(_newAdultItem);
+        _navigationManager.NavigateTo("/adults");
+    }
+
+}
