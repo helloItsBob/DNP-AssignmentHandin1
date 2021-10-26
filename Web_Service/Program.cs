@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Hand_in1
+namespace Web_Service
 {
     public class Program
     {

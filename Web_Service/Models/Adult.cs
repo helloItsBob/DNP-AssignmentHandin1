@@ -1,4 +1,4 @@
-namespace Hand_in1.Models
+namespace Web_Service.Models
 {
     public class Adult : Person
     {

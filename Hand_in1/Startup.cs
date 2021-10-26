@@ -1,23 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Hand_in1.Authentication;
 using Hand_in1.Data;
 using Hand_in1.Data.Impl;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Hand_in1.Persistence;
 using Hand_in1.Persistence.Impl;
 using Microsoft.AspNetCore.Components.Authorization;
 using Syncfusion.Blazor;
-using Syncfusion.Blazor.Charts;
 
 namespace Hand_in1
 {

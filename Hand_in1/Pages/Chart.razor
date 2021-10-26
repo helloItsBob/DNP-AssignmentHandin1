@@ -2,12 +2,8 @@
 @inject FileContext _fileContext
 @inject NavigationManager _navigationManager
 @attribute [Authorize(Policy = "SecurityLevel3")]
-
-@using Syncfusion.Blazor.Charts
 @using Hand_in1.Models
-@using Hand_in1.Persistence
 @using Hand_in1.Persistence.Impl
-@using Syncfusion.Blazor
 
 <div style="color:#fff;">
     Total female count: @GetAllFemales()
