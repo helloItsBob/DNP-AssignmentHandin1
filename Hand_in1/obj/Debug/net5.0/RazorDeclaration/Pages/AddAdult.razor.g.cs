@@ -104,7 +104,14 @@ using Hand_in1.Models;
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
+#line 4 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
+using Hand_in1.Persistence.Impl;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
            [Authorize(Policy = "SecurityLevel2")]
 
 #line default
@@ -119,7 +126,7 @@ using Hand_in1.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 71 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
+#line 72 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
        
 
     private Adult _newAdultItem = new Adult() {JobTitle = new Job(), Sex = "M"}; // simultaneously creates Job object 

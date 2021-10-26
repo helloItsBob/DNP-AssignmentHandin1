@@ -103,6 +103,13 @@ using Hand_in1.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
+using Hand_in1.Persistence.Impl;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Adults")]
     public partial class Adults : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,7 +119,7 @@ using Hand_in1.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 123 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
+#line 124 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
        
 
     private string Filter { get; set; }
@@ -179,7 +186,7 @@ using Hand_in1.Models;
 
     protected override async Task OnInitializedAsync()
     {
-        _allAdults = _fileContext.Adults;
+        _allAdults = _fileContext.GetAllAdults();
         _adultsToShow = _allAdults;
     }
 

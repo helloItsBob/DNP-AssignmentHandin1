@@ -6,6 +6,7 @@
 @using Syncfusion.Blazor.Charts
 @using Hand_in1.Models
 @using Hand_in1.Persistence
+@using Hand_in1.Persistence.Impl
 @using Syncfusion.Blazor
 
 <div style="color:#fff;">
@@ -63,7 +64,7 @@
     
     protected override async Task OnInitializedAsync()
     {
-        _allAdults = _fileContext.Adults;
+        _allAdults = _fileContext.GetAllAdults();
     }
     
     private int GetAllFemales()

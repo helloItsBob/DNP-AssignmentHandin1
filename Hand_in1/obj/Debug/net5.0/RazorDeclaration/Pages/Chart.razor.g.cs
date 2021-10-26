@@ -105,6 +105,13 @@ using Hand_in1.Persistence;
 #nullable disable
 #nullable restore
 #line 9 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
+using Hand_in1.Persistence.Impl;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
 using Syncfusion.Blazor;
 
 #line default
@@ -126,14 +133,14 @@ using Syncfusion.Blazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
+#line 61 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
       
     
     private IList<Adult> _allAdults;
     
     protected override async Task OnInitializedAsync()
     {
-        _allAdults = _fileContext.Adults;
+        _allAdults = _fileContext.GetAllAdults();
     }
     
     private int GetAllFemales()

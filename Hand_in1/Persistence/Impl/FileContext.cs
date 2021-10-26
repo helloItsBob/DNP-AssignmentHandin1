@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text.Json;
 using Hand_in1.Models;
 
-namespace Hand_in1.Persistence
+namespace Hand_in1.Persistence.Impl
 {
-    public class FileContext
+    public class FileContext : IFileJson
     {
-        public IList<Adult> Adults { get; private set; }
+        private IList<Adult> Adults { get; set; }
 
         private readonly string adultsFile = "adults.json";
 
@@ -19,7 +19,7 @@ namespace Hand_in1.Persistence
 
         private IList<T> ReadData<T>(string s)
         {
-            using (var jsonReader = File.OpenText(adultsFile)) // change to read either adults or families
+            using (var jsonReader = File.OpenText(adultsFile))
             {
                 return JsonSerializer.Deserialize<List<T>>(jsonReader.ReadToEnd());
             }
@@ -37,7 +37,13 @@ namespace Hand_in1.Persistence
                 outputFile.Write(jsonAdults);
             }
         }
-        
+
+        public IList<Adult> GetAllAdults()
+        {
+            List<Adult> tmp = new List<Adult>(Adults);
+            return tmp;
+        }
+
         public void AddAdult(Adult adult)
         {
             int max = Adults.Max(adult => adult.Id);
