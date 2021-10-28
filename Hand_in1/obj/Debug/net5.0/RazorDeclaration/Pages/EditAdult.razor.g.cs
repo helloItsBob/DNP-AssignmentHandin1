@@ -124,7 +124,7 @@ using Hand_in1.Data;
     {
         try
         {
-            _adultToEdit = await _webAdultService.ReadAsync(Id);
+            _adultToEdit = await _webAdultService.GetAdultAsync(Id);
         }
         catch (Exception e)
         {
@@ -137,7 +137,7 @@ using Hand_in1.Data;
     {
         try
         {
-            await _webAdultService.UpdateAsync(_adultToEdit);
+            await _webAdultService.EditAdultAsync(_adultToEdit);
             _navigationManager.NavigateTo("/Adults");
         }
         catch (Exception e)

@@ -18,7 +18,7 @@ namespace Web_Service.Data.Impl
             _adults = fileContext.Adults;
         }
         
-        public async Task<Adult> CreateAsync(Adult adult)
+        public async Task<Adult> AddAdultAsync(Adult adult)
         {
             int max;
             try
@@ -36,18 +36,18 @@ namespace Web_Service.Data.Impl
             return adult;
         }
 
-        public async Task<Adult> ReadAsync(int id)
+        public async Task<Adult> GetAdultAsync(int id)
         {
             return _adults.First(adult => adult.Id == id);
         }
 
-        public async Task<IList<Adult>> ReadAllAsync()
+        public async Task<IList<Adult>> GetAllAdultsAsync()
         {
             // return a copy
             return new List<Adult>(_adults);
         }
 
-        public async Task<Adult> UpdateAsync(Adult adult)
+        public async Task<Adult> EditAdultAsync(Adult adult)
         {
             Adult toUpdate = _adults.First(ad => ad.Id == adult.Id);
             toUpdate.FirstName = adult.FirstName;
@@ -63,7 +63,7 @@ namespace Web_Service.Data.Impl
             return toUpdate;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task RemoveAdultAsync(int id)
         {
             Adult toDelete = _adults.First(ad => ad.Id == id);
             _adults.Remove(toDelete);

@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web_Service.Data;
-using Web_Service.Data.Impl;
 using Web_Service.Models;
-using Web_Service.Persistence;
 
 namespace Web_Service.Controllers
 {
@@ -26,7 +24,7 @@ namespace Web_Service.Controllers
         {
             try
             {
-                IList<Adult> adults = await _adultService.ReadAllAsync();
+                IList<Adult> adults = await _adultService.GetAllAdultsAsync();
 
                 if (adultId != null)
                 {
@@ -48,7 +46,7 @@ namespace Web_Service.Controllers
         {
             try
             {
-                Adult adult = await _adultService.ReadAsync(id);
+                Adult adult = await _adultService.GetAdultAsync(id);
                 return Ok(adult);
             }
             catch (Exception e)
@@ -64,7 +62,7 @@ namespace Web_Service.Controllers
         {
             try
             {
-                await _adultService.DeleteAsync(id);
+                await _adultService.RemoveAdultAsync(id);
                 return Ok();
             }
             catch (Exception e)
@@ -84,7 +82,7 @@ namespace Web_Service.Controllers
 
             try
             {
-                Adult added = await _adultService.CreateAsync(adult);
+                Adult added = await _adultService.AddAdultAsync(adult);
                 return Created($"/{added.Id}", added); // return newly added Adult, to get the auto generated id
             }
             catch (Exception e)
@@ -95,12 +93,12 @@ namespace Web_Service.Controllers
         }
         
         [HttpPatch]
-        [Route("{id:int}")] // would be needed if we were to use adultId initially
+        [Route("{id:int}")]
         public async Task<ActionResult<Adult>> UpdateAdult([FromBody] Adult adult)
         {
             try
             {
-                Adult updatedAdult = await _adultService.UpdateAsync(adult);
+                Adult updatedAdult = await _adultService.EditAdultAsync(adult);
                 return Ok(updatedAdult);
             }
             catch (Exception e)

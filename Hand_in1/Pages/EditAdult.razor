@@ -80,7 +80,7 @@ else
     {
         try
         {
-            _adultToEdit = await _webAdultService.ReadAsync(Id);
+            _adultToEdit = await _webAdultService.GetAdultAsync(Id);
         }
         catch (Exception e)
         {
@@ -93,7 +93,7 @@ else
     {
         try
         {
-            await _webAdultService.UpdateAsync(_adultToEdit);
+            await _webAdultService.EditAdultAsync(_adultToEdit);
             _navigationManager.NavigateTo("/Adults");
         }
         catch (Exception e)

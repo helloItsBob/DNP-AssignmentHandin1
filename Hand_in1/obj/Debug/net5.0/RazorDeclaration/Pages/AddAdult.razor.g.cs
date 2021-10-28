@@ -127,7 +127,7 @@ using Hand_in1.Data;
 
     private async Task AddNewAdult()
     {
-        await _webAdultService.CreateAsync(_newAdultItem);
+        await _webAdultService.AddAdultAsync(_newAdultItem);
         _navigationManager.NavigateTo("/adults");
     }
 

@@ -19,22 +19,17 @@ namespace Hand_in1.Data.Impl
             _client = new HttpClient();
         }
         
-        public async Task CreateAsync(Adult adult)
+        public async Task AddAdultAsync(Adult adult)
         {
             string adultAsJson = JsonSerializer.Serialize(adult);
-            StringContent content = new StringContent(
-                adultAsJson,
-                Encoding.UTF8,
-                "application/json"
-            );
+            StringContent content = new StringContent(adultAsJson, Encoding.UTF8, "application/json");
 
             HttpResponseMessage responseMessage = await _client.PostAsync(Uri + "/adults", content);
             if (!responseMessage.IsSuccessStatusCode)
                 throw new Exception($"Error: {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
-
         }
 
-        public async Task<Adult> ReadAsync(int id)
+        public async Task<Adult> GetAdultAsync(int id)
         {
             HttpResponseMessage responseMessage = await _client.GetAsync(Uri + $"/Adults/{id}");
 
@@ -47,10 +42,11 @@ namespace Hand_in1.Data.Impl
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });
+            
             return adult;
         }
 
-        public async Task<IList<Adult>> ReadAllAsync()
+        public async Task<IList<Adult>> GetAllAdultsAsync()
         {
             HttpResponseMessage responseMessage = await _client.GetAsync(Uri + "/Adults");
 
@@ -63,31 +59,25 @@ namespace Hand_in1.Data.Impl
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });
+            
             return adults;
         }
 
-        public async Task UpdateAsync(Adult adult)
+        public async Task EditAdultAsync(Adult adult)
         {
             string adultAsJson = JsonSerializer.Serialize(adult);
-            StringContent content = new(
-                adultAsJson,
-                Encoding.UTF8,
-                "application/json"
-            );
+            StringContent content = new(adultAsJson, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage responseMessage = 
-                await _client.PatchAsync(Uri + $"/adults/{adult.Id}", content);
+            HttpResponseMessage responseMessage = await _client.PatchAsync(Uri + $"/adults/{adult.Id}", content);
             if (!responseMessage.IsSuccessStatusCode)
                 throw new Exception($"Error: {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
-
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task RemoveAdultAsync(int id)
         {
             HttpResponseMessage responseMessage = await _client.DeleteAsync(Uri + $"/adults/{id}");
             if (!responseMessage.IsSuccessStatusCode)
                 throw new Exception($"Error: {responseMessage.StatusCode}, {responseMessage.ReasonPhrase}");
-
         }
     }
 }

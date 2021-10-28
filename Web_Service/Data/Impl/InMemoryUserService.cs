@@ -43,7 +43,7 @@ namespace Web_Service.Data.Impl
             });
         }
 
-        public async Task<User> ValidateUser(string username, string password)
+        public async Task<User> ValidateUserAsync(string username, string password)
         {
             User user = users.FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
             if (user != null)

@@ -130,7 +130,7 @@ using Hand_in1.Data;
     {
         try
         {
-            _allAdults = await _webAdultService.ReadAllAsync();
+            _allAdults = await _webAdultService.GetAllAdultsAsync();
             GetAllFemales();
             GetAllMales();
         }

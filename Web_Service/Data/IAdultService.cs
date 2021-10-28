@@ -6,10 +6,10 @@ namespace Web_Service.Data
 {
     public interface IAdultService
     {
-        Task<Adult> CreateAsync(Adult adult);
-        Task<Adult> ReadAsync(int id);
-        Task<IList<Adult>> ReadAllAsync();
-        Task<Adult> UpdateAsync(Adult adult);
-        Task DeleteAsync(int id);
+        Task<Adult> AddAdultAsync(Adult adult);
+        Task<Adult> GetAdultAsync(int id);
+        Task<IList<Adult>> GetAllAdultsAsync();
+        Task<Adult> EditAdultAsync(Adult adult);
+        Task RemoveAdultAsync(int id);
     }
 }

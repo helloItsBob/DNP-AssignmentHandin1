@@ -52,7 +52,6 @@ C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\ref\Hand_in1.dll
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Hand_in1.pdb
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Hand_in1.genruntimeconfig.cache
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Hand_in1.csproj.CopyComplete
-C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\bin\Debug\net5.0\adults.json
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\Pages\Adults.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\Pages\Adults.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\Pages\AddAdult.razor.g.cs

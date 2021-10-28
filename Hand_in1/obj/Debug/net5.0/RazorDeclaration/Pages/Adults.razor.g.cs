@@ -179,14 +179,14 @@ using Hand_in1.Data;
 
     protected override async Task OnInitializedAsync()
     {
-        _allAdults = await _webAdultService.ReadAllAsync();
+        _allAdults = await _webAdultService.GetAllAdultsAsync();
         _adultsToShow = _allAdults;
     }
 
     private async Task RemoveAdult(int adultId)
     {
         Adult toRemove = _allAdults.First(a => a.Id == adultId);
-        await _webAdultService.DeleteAsync(adultId);
+        await _webAdultService.RemoveAdultAsync(adultId);
         _allAdults.Remove(toRemove);
     }
 
