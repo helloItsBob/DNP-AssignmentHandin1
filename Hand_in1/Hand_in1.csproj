@@ -5,6 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Chart.js" Version="2.9.3" />
+      <PackageReference Include="ChartJs.Blazor" Version="1.1.0" />
       <PackageReference Include="Syncfusion.Blazor.Charts" Version="19.3.0.44" />
     </ItemGroup>
 

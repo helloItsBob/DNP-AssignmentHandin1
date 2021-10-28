@@ -1,14 +1,14 @@
 ﻿@page "/chart"
-@inject FileContext _fileContext
+@inject IAdultService _webAdultService
 @inject NavigationManager _navigationManager
 @attribute [Authorize(Policy = "SecurityLevel3")]
 @using Hand_in1.Models
-@using Hand_in1.Persistence.Impl
+@using Hand_in1.Data
 
 <div style="color:#fff;">
-    Total female count: @GetAllFemales()
+    Total female count: @_females
     <br/>
-    Total male count: @GetAllMales()
+    Total male count: @_males
     <hr/>
 </div>
 
@@ -24,16 +24,6 @@
 
 <hr/>
 
-<SfChart>
-    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"/>
-    <ChartSeriesCollection>
-        <ChartSeries DataSource="@GetAllGenders()" XName="Sex" YName="Count" Type="ChartSeriesType.Column">
-        </ChartSeries>
-    </ChartSeriesCollection>
-</SfChart>
-
-<hr/>
-
 <SfAccumulationChart>
     <AccumulationChartSeriesCollection>
         <AccumulationChartSeries DataSource="@GetAllGenders()" XName="Sex" YName="Count"
@@ -44,53 +34,41 @@
     <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
 </SfAccumulationChart>
 
-<hr/>
-
-<SfChart>
-    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"/>
-    <ChartSeriesCollection>
-        <ChartSeries DataSource="@GetAllGenders()" XName="Sex" YName="Count" Type="ChartSeriesType.Bar">
-        </ChartSeries>
-    </ChartSeriesCollection>
-</SfChart>
-
 @code{
     
     private IList<Adult> _allAdults;
+    private int _males;
+    private int _females;
     
     protected override async Task OnInitializedAsync()
     {
-        _allAdults = _fileContext.GetAllAdults();
+        try
+        {
+            _allAdults = await _webAdultService.ReadAllAsync();
+            GetAllFemales();
+            GetAllMales();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            //throw;
+        }
+    }
+
+    private void GetAllFemales()
+    {
+        int tmp = 0;
+        tmp = _allAdults.Count(adult => adult.Sex.Equals("F"));
+        _females = tmp;
+    }
+
+    private void GetAllMales()
+    {
+        int tmp = 0;
+        tmp = _allAdults.Count(adult => adult.Sex.Equals("M"));
+        _males = tmp;
     }
     
-    private int GetAllFemales()
-    {
-        int femaleCount = 0;
-
-        foreach (var adult in _allAdults)
-        {
-            if (adult.Sex.Equals("F"))
-            {
-                femaleCount++;
-            }
-        }
-        return femaleCount;
-    }
-
-    private int GetAllMales()
-    {
-        int maleCount = 0;
-
-        foreach (var adult in _allAdults)
-        {
-            if (adult.Sex.Equals("M"))
-            {
-                maleCount++;
-            }
-        }
-        return maleCount;
-    }
-
     private List<object> GetAllGenders()
     {
         return new List<object>
@@ -98,12 +76,12 @@
             new
             {
                 Sex = "Females",
-                Count = GetAllFemales()
+                Count = _females
             },
             new
             {
                 Sex = "Males",
-                Count = GetAllMales()
+                Count = _males
             }
         };
     }

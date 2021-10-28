@@ -91,21 +91,14 @@ using Syncfusion.Blazor.Charts;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\EditAdult.razor"
-using Hand_in1.Persistence;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\EditAdult.razor"
 using Hand_in1.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\EditAdult.razor"
-using Hand_in1.Persistence.Impl;
+#line 3 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\EditAdult.razor"
+using Hand_in1.Data;
 
 #line default
 #line hidden
@@ -119,23 +112,39 @@ using Hand_in1.Persistence.Impl;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 73 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\EditAdult.razor"
+#line 72 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\EditAdult.razor"
        
 
     [Parameter]
     public int Id { get; set; }
 
-    private Adult adultToEdit;
+    private Adult _adultToEdit;
 
     protected override async Task OnInitializedAsync()
     {
-        adultToEdit = _fileContext.Get(Id);
+        try
+        {
+            _adultToEdit = await _webAdultService.ReadAsync(Id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
-    private void Save()
+    private async Task Save()
     {
-        _fileContext.EditAdult(adultToEdit);
-        _navigationManager.NavigateTo("/Adults");
+        try
+        {
+            await _webAdultService.UpdateAsync(_adultToEdit);
+            _navigationManager.NavigateTo("/Adults");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
     }
 
 
@@ -143,7 +152,7 @@ using Hand_in1.Persistence.Impl;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _navigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private FileContext _fileContext { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdultService _webAdultService { get; set; }
     }
 }
 #pragma warning restore 1591

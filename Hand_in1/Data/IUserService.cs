@@ -1,9 +1,10 @@
-﻿using Hand_in1.Models;
+﻿using System.Threading.Tasks;
+using Hand_in1.Models;
 
 namespace Hand_in1.Data
 {
     public interface IUserService
     {
-        User ValidateUser(string username, string password);
+        Task<User> ValidateUserAsync(string username, string password);
     }
 }

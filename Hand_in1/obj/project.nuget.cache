@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lBlnv7TYN0S5A7i6Yoqxf6QyQW6FWC0ZpX+CzuINZsNcXuegynuzCk2uqotWjl2GZBP4JRzka1kTOijsMNJTvw==",
+  "dgSpecHash": "slaocJ5KgLO2JHittWWY7oe0rpJUcaFqsQJ333DVY3jV2173mV9BR82Qt2ZKwmOCS6hu2s7VfHD0c+BFR7SQOw==",
   "success": true,
   "projectFilePath": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Hand_in1\\Hand_in1.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\slip1\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",
+    "C:\\Users\\slip1\\.nuget\\packages\\chartjs.blazor\\1.1.0\\chartjs.blazor.1.1.0.nupkg.sha512",
     "C:\\Users\\slip1\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.0\\microsoft.aspnetcore.authorization.5.0.0.nupkg.sha512",
     "C:\\Users\\slip1\\.nuget\\packages\\microsoft.aspnetcore.components\\5.0.0\\microsoft.aspnetcore.components.5.0.0.nupkg.sha512",
     "C:\\Users\\slip1\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\5.0.0\\microsoft.aspnetcore.components.analyzers.5.0.0.nupkg.sha512",

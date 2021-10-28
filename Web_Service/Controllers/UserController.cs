@@ -23,7 +23,7 @@ namespace Web_Service.Controllers
             Console.WriteLine("Here");
             try
             {
-                var user = await _userService.ValidateUserAsync(username, password);
+                var user = await _userService.ValidateUser(username, password);
                 return Ok(user);
             }
             catch (Exception e)

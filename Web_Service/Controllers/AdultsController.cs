@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Web_Service.Data;
+using Web_Service.Data.Impl;
 using Web_Service.Models;
-using Web_Service.Persistence.Impl;
+using Web_Service.Persistence;
 
 namespace Web_Service.Controllers
 {
@@ -12,11 +14,11 @@ namespace Web_Service.Controllers
     [Route("[controller]")]
     public class AdultsController : ControllerBase
     {
-        private FileContext _fileContext;
+        private IAdultService _adultService;
 
-        public AdultsController(FileContext fileContext)
+        public AdultsController(IAdultService adultService)
         {
-            _fileContext = fileContext;
+            _adultService = adultService;
         }
 
         [HttpGet]
@@ -24,7 +26,7 @@ namespace Web_Service.Controllers
         {
             try
             {
-                IList<Adult> adults = await _fileContext.GetAllAdultsAsync();
+                IList<Adult> adults = await _adultService.ReadAllAsync();
 
                 if (adultId != null)
                 {
@@ -40,13 +42,29 @@ namespace Web_Service.Controllers
             }
         }
         
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<ActionResult<Adult>> GetAdult([FromRoute] int id)
+        {
+            try
+            {
+                Adult adult = await _adultService.ReadAsync(id);
+                return Ok(adult);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return StatusCode(500, e.Message);
+            }
+        }
+        
         [HttpDelete]
         [Route("{id:int}")]
         public async Task<ActionResult> RemoveAdult([FromRoute] int id)
         {
             try
             {
-                await _fileContext.RemoveAdultAsync(id);
+                await _adultService.DeleteAsync(id);
                 return Ok();
             }
             catch (Exception e)
@@ -66,7 +84,7 @@ namespace Web_Service.Controllers
 
             try
             {
-                Adult added = await _fileContext.AddAdultAsync(adult);
+                Adult added = await _adultService.CreateAsync(adult);
                 return Created($"/{added.Id}", added); // return newly added Adult, to get the auto generated id
             }
             catch (Exception e)
@@ -77,12 +95,12 @@ namespace Web_Service.Controllers
         }
         
         [HttpPatch]
-        // [Route("{id:int}")] // would be needed if we were to use adultId initially
+        [Route("{id:int}")] // would be needed if we were to use adultId initially
         public async Task<ActionResult<Adult>> UpdateAdult([FromBody] Adult adult)
         {
             try
             {
-                Adult updatedAdult = await _fileContext.EditAdultAsync(adult);
+                Adult updatedAdult = await _adultService.UpdateAsync(adult);
                 return Ok(updatedAdult);
             }
             catch (Exception e)

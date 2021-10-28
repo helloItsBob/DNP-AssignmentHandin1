@@ -12,44 +12,43 @@ namespace Web_Service.Data.Impl
 
         public InMemoryUserService()
         {
-            users = new[]
+            users = new List<User>();
+            
+            users.Add(new User
             {
-                new User
-                {
-                    Username = "Alex",
-                    Password = "qwerty",
-                    Domain = "via.dk",
-                    BirthYear = 1992,
-                    Role = "Manager",
-                    SecurityLevel = 3
-                },
-                new User
-                {
-                    Username = "Bob",
-                    Password = "123456",
-                    Domain = "via.dk",
-                    BirthYear = 1992,
-                    Role = "Employee",
-                    SecurityLevel = 2
-                },
-                new User
-                {
-                    Username = "Alice",
-                    Password = "654321",
-                    Domain = "yahoo.dk",
-                    BirthYear = 2003,
-                    Role = "Customer",
-                    SecurityLevel = 1
-                },
-            }.ToList();
+                Username = "Alex",
+                Password = "qwerty",
+                Domain = "via.dk",
+                BirthYear = 1992,
+                Role = "Manager",
+                SecurityLevel = 3
+            });
+            users.Add(new User
+            {
+                Username = "Bob",
+                Password = "123456",
+                Domain = "via.dk",
+                BirthYear = 1992,
+                Role = "Employee",
+                SecurityLevel = 2
+            });
+            users.Add(new User
+            {
+                Username = "Alice",
+                Password = "654321",
+                Domain = "yahoo.dk",
+                BirthYear = 2003,
+                Role = "Customer",
+                SecurityLevel = 1
+            });
         }
 
-        public async Task<User> ValidateUserAsync(string username, string password)
+        public async Task<User> ValidateUser(string username, string password)
         {
-            User first = users.FirstOrDefault(user => user.Username.Equals(username) && user.Password.Equals(password));
-            if (first != null)
+            User user = users.FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
+            if (user != null)
             {
-                return first;
+                return user;
             }
 
             throw new Exception("User not found!");

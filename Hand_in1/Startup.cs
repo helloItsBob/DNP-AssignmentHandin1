@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Hand_in1.Persistence.Impl;
 using Microsoft.AspNetCore.Components.Authorization;
 using Syncfusion.Blazor;
 
@@ -28,8 +27,8 @@ namespace Hand_in1
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<FileContext>();
-            services.AddScoped<IUserService, InMemoryUserService>();
+            services.AddScoped<IAdultService, WebAdultService>();
+            services.AddScoped<IUserService, WebUserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             services.AddSyncfusionBlazor();
 

@@ -91,21 +91,14 @@ using Syncfusion.Blazor.Charts;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
-using Hand_in1.Persistence;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
 using Hand_in1.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
-using Hand_in1.Persistence.Impl;
+#line 3 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
+using Hand_in1.Data;
 
 #line default
 #line hidden
@@ -119,7 +112,7 @@ using Hand_in1.Persistence.Impl;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 124 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
+#line 123 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Adults.razor"
        
 
     private string Filter { get; set; }
@@ -186,27 +179,35 @@ using Hand_in1.Persistence.Impl;
 
     protected override async Task OnInitializedAsync()
     {
-        _allAdults = _fileContext.GetAllAdults();
+        _allAdults = await _webAdultService.ReadAllAsync();
         _adultsToShow = _allAdults;
     }
 
-    private void RemoveAdult(int adultId)
+    private async Task RemoveAdult(int adultId)
     {
         Adult toRemove = _allAdults.First(a => a.Id == adultId);
-        _fileContext.RemoveAdult(adultId);
+        await _webAdultService.DeleteAsync(adultId);
         _allAdults.Remove(toRemove);
     }
 
     private void EditAdult(int adultId)
     {
-        _navigationManager.NavigateTo($"Edit/{adultId}");
+        try
+        {
+            _navigationManager.NavigateTo($"Edit/{adultId}");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _navigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private FileContext _fileContext { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdultService _webAdultService { get; set; }
     }
 }
 #pragma warning restore 1591

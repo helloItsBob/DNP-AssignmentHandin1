@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Web_Service.Data;
 using Web_Service.Data.Impl;
-using Web_Service.Persistence.Impl;
+using Web_Service.Persistence;
 
 namespace Web_Service
 {
@@ -23,7 +23,8 @@ namespace Web_Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<FileContext>();
+            services.AddSingleton<FileContext>();
+            services.AddScoped<IAdultService, AdultService>();
             services.AddScoped<IUserService, InMemoryUserService>();
             services.AddSwaggerGen(c =>
             {

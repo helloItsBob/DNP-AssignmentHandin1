@@ -71,3 +71,4 @@ C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\bin\Debug\net5.0\Syncfusion.Licen
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\bin\Debug\net5.0\Syncfusion.PdfExport.Net.dll
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\Pages\Chart.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\Pages\Chart.razor.g.cs
+C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\bin\Debug\net5.0\ChartJs.Blazor.dll

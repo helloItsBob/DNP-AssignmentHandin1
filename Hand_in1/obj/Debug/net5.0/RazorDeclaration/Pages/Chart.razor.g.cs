@@ -83,36 +83,22 @@ using Hand_in1.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
+#line 11 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\_Imports.razor"
 using Syncfusion.Blazor.Charts;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
+#line 5 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
 using Hand_in1.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
-using Hand_in1.Persistence;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 9 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
-using Hand_in1.Persistence.Impl;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 10 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
-using Syncfusion.Blazor;
+#line 6 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
+using Hand_in1.Data;
 
 #line default
 #line hidden
@@ -133,44 +119,42 @@ using Syncfusion.Blazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 61 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
+#line 37 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\Chart.razor"
       
     
     private IList<Adult> _allAdults;
+    private int _males;
+    private int _females;
     
     protected override async Task OnInitializedAsync()
     {
-        _allAdults = _fileContext.GetAllAdults();
+        try
+        {
+            _allAdults = await _webAdultService.ReadAllAsync();
+            GetAllFemales();
+            GetAllMales();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            //throw;
+        }
+    }
+
+    private void GetAllFemales()
+    {
+        int tmp = 0;
+        tmp = _allAdults.Count(adult => adult.Sex.Equals("F"));
+        _females = tmp;
+    }
+
+    private void GetAllMales()
+    {
+        int tmp = 0;
+        tmp = _allAdults.Count(adult => adult.Sex.Equals("M"));
+        _males = tmp;
     }
     
-    private int GetAllFemales()
-    {
-        int femaleCount = 0;
-
-        foreach (var adult in _allAdults)
-        {
-            if (adult.Sex.Equals("F"))
-            {
-                femaleCount++;
-            }
-        }
-        return femaleCount;
-    }
-
-    private int GetAllMales()
-    {
-        int maleCount = 0;
-
-        foreach (var adult in _allAdults)
-        {
-            if (adult.Sex.Equals("M"))
-            {
-                maleCount++;
-            }
-        }
-        return maleCount;
-    }
-
     private List<object> GetAllGenders()
     {
         return new List<object>
@@ -178,12 +162,12 @@ using Syncfusion.Blazor;
             new
             {
                 Sex = "Females",
-                Count = GetAllFemales()
+                Count = _females
             },
             new
             {
                 Sex = "Males",
-                Count = GetAllMales()
+                Count = _males
             }
         };
     }
@@ -192,7 +176,7 @@ using Syncfusion.Blazor;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _navigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private FileContext _fileContext { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdultService _webAdultService { get; set; }
     }
 }
 #pragma warning restore 1591

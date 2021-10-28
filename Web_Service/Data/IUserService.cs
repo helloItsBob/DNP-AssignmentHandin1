@@ -5,6 +5,6 @@ namespace Web_Service.Data
 {
     public interface IUserService
     {
-        Task<User> ValidateUserAsync(string username, string password);
+        Task<User> ValidateUser(string username, string password);
     }
 }

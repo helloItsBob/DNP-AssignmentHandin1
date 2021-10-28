@@ -91,27 +91,20 @@ using Syncfusion.Blazor.Charts;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
-using Hand_in1.Persistence;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
 using Hand_in1.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
-using Hand_in1.Persistence.Impl;
+#line 3 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
+using Hand_in1.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
+#line 6 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
            [Authorize(Policy = "SecurityLevel2")]
 
 #line default
@@ -126,15 +119,15 @@ using Hand_in1.Persistence.Impl;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 72 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
+#line 71 "C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\Pages\AddAdult.razor"
        
 
     private Adult _newAdultItem = new Adult() {JobTitle = new Job(), Sex = "M"}; // simultaneously creates Job object 
     //and defaults Sex value
 
-    private void AddNewAdult()
+    private async Task AddNewAdult()
     {
-        _fileContext.AddAdult(_newAdultItem);
+        await _webAdultService.CreateAsync(_newAdultItem);
         _navigationManager.NavigateTo("/adults");
     }
 
@@ -143,7 +136,7 @@ using Hand_in1.Persistence.Impl;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager _navigationManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private FileContext _fileContext { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAdultService _webAdultService { get; set; }
     }
 }
 #pragma warning restore 1591

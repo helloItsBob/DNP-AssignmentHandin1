@@ -116,7 +116,7 @@ using Hand_in1.Authentication;
         errorMessage = "";
         try
         {
-            ((CustomAuthenticationStateProvider) _authenticationStateProvider).ValidateLogin(username, password);
+            await ((CustomAuthenticationStateProvider) _authenticationStateProvider).ValidateLogin(username, password);
             username = "";
             password = "";
             _navigationManager.NavigateTo("/");
@@ -134,7 +134,7 @@ using Hand_in1.Authentication;
         password = "";
         try
         {
-            ((CustomAuthenticationStateProvider) _authenticationStateProvider).Logout();
+            await ((CustomAuthenticationStateProvider) _authenticationStateProvider).Logout();
             _navigationManager.NavigateTo("/");
         }
         catch (Exception e)

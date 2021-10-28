@@ -1,62 +1,62 @@
 ﻿@page "/Edit/{Id:int}"
 @using Hand_in1.Models
-@using Hand_in1.Persistence.Impl
-@inject FileContext _fileContext
+@using Hand_in1.Data
+@inject IAdultService _webAdultService
 @inject NavigationManager _navigationManager
 
 
-@if (adultToEdit == null)
+@if (_adultToEdit == null)
 {
     <em>Adult not found!</em>
 }
 else
 {
-    <EditForm Model="@adultToEdit" OnValidSubmit="@Save">
+    <EditForm Model="@_adultToEdit" OnValidSubmit="@Save">
         <DataAnnotationsValidator/>
         <ValidationSummary/>
         <div id="form-container">
             <div id="left">
                 <div class="form-group">
                     First name: <br/>
-                    <InputText @bind-Value="adultToEdit.FirstName"/>
+                    <InputText @bind-Value="_adultToEdit.FirstName"/>
                 </div>
                 <div class="form-group">
                     Last name: <br/>
-                    <InputText @bind-Value="adultToEdit.LastName"/>
+                    <InputText @bind-Value="_adultToEdit.LastName"/>
                 </div>
                 <div class="form-group">
                     Hair color: <br/>
-                    <InputText @bind-Value="adultToEdit.HairColor"/>
+                    <InputText @bind-Value="_adultToEdit.HairColor"/>
                 </div>
                 <div class="form-group">
                     Eye color: <br/>
-                    <InputText @bind-Value="adultToEdit.EyeColor"/>
+                    <InputText @bind-Value="_adultToEdit.EyeColor"/>
                 </div>
                 <div class="form-group">
                     Age: <br/>
-                    <InputNumber @bind-Value="adultToEdit.Age"/>
+                    <InputNumber @bind-Value="_adultToEdit.Age"/>
                 </div>
             </div>
             <div id="right">
                 <div class="form-group">
                     Weight: <br/>
-                    <InputNumber @bind-Value="adultToEdit.Weight"/>
+                    <InputNumber @bind-Value="_adultToEdit.Weight"/>
                 </div>
                 <div class="form-group">
                     Height: <br/>
-                    <InputNumber @bind-Value="adultToEdit.Height"/>
+                    <InputNumber @bind-Value="_adultToEdit.Height"/>
                 </div>
                 <div class="form-group">
                     Sex: <br/>
-                    <InputText @bind-Value="adultToEdit.Sex"/>
+                    <InputText @bind-Value="_adultToEdit.Sex"/>
                 </div>
                 <div class="form-group">
                     Jobtitle: <br/>
-                    <InputText @bind-Value="adultToEdit.JobTitle.JobTitle"/>
+                    <InputText @bind-Value="_adultToEdit.JobTitle.JobTitle"/>
                 </div>
                 <div class="form-group">
                     Salary: <br/>
-                    <InputNumber @bind-Value="adultToEdit.JobTitle.Salary"/>
+                    <InputNumber @bind-Value="_adultToEdit.JobTitle.Salary"/>
                 </div>
             </div>
         </div>
@@ -74,17 +74,33 @@ else
     [Parameter]
     public int Id { get; set; }
 
-    private Adult adultToEdit;
+    private Adult _adultToEdit;
 
     protected override async Task OnInitializedAsync()
     {
-        adultToEdit = _fileContext.Get(Id);
+        try
+        {
+            _adultToEdit = await _webAdultService.ReadAsync(Id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
-    private void Save()
+    private async Task Save()
     {
-        _fileContext.EditAdult(adultToEdit);
-        _navigationManager.NavigateTo("/Adults");
+        try
+        {
+            await _webAdultService.UpdateAsync(_adultToEdit);
+            _navigationManager.NavigateTo("/Adults");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
     }
 
 }
