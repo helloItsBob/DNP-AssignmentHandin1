@@ -19,7 +19,6 @@ C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Hand_in1.MvcAppl
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Hand_in1.RazorComponent.input.cache
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
-C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -30,7 +29,6 @@ C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Hand_in1.TagHelp
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Hand_in1.RazorCoreGenerate.cache
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\App.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
-C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
