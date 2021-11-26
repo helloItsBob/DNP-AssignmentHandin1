@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Hand_in1\\Hand_in1.csproj": {}
+    "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Hand_in1\\Hand_in1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Hand_in1\\Hand_in1.csproj": {
+    "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Hand_in1\\Hand_in1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Hand_in1\\Hand_in1.csproj",
+        "projectUniqueName": "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Hand_in1\\Hand_in1.csproj",
         "projectName": "Hand_in1",
-        "projectPath": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Hand_in1\\Hand_in1.csproj",
+        "projectPath": "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Hand_in1\\Hand_in1.csproj",
         "packagesPath": "C:\\Users\\slip1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Hand_in1\\obj\\",
+        "outputPath": "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Hand_in1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\slip1\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -23,9 +23,11 @@ namespace Web_Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<FileContext>();
-            services.AddScoped<IAdultService, AdultService>();
-            services.AddScoped<IUserService, InMemoryUserService>();
+
+            services.AddDbContext<AdultContext>();
+            services.AddScoped<IUserService, SqliteUserService>();
+            services.AddScoped<IAdultService, SqliteAdultService>();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Web_Service", Version = "v1"});

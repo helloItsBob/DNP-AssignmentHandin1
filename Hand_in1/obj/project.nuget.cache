@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "slaocJ5KgLO2JHittWWY7oe0rpJUcaFqsQJ333DVY3jV2173mV9BR82Qt2ZKwmOCS6hu2s7VfHD0c+BFR7SQOw==",
+  "dgSpecHash": "wmx2ok6oneElLsy5+zXhePA4+drYYu7XlKe4By8kKWgWi74lwnTOq3VMvJJX9fcuuxOUwBkAtNOwHVi2w02Wpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Hand_in1\\Hand_in1.csproj",
+  "projectFilePath": "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Hand_in1\\Hand_in1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\slip1\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",
     "C:\\Users\\slip1\\.nuget\\packages\\chartjs.blazor\\1.1.0\\chartjs.blazor.1.1.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Web_Service\\Web_Service.csproj": {}
+    "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Web_Service\\Web_Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Web_Service\\Web_Service.csproj": {
+    "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Web_Service\\Web_Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Web_Service\\Web_Service.csproj",
+        "projectUniqueName": "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Web_Service\\Web_Service.csproj",
         "projectName": "Web_Service",
-        "projectPath": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Web_Service\\Web_Service.csproj",
+        "projectPath": "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Web_Service\\Web_Service.csproj",
         "packagesPath": "C:\\Users\\slip1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slip1\\RiderProjects\\Hand_in1\\Web_Service\\obj\\",
+        "outputPath": "C:\\Users\\slip1\\RiderProjects\\DNP-AssignmentHandin1\\Web_Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\slip1\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,20 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.11, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"

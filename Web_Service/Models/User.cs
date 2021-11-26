@@ -1,7 +1,10 @@
-﻿namespace Web_Service.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Web_Service.Models
 {
     public class User
     {
+        [Key]
         public string Username { get; set; }
         public string Password { get; set; }
 

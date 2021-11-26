@@ -4,5 +4,5 @@
   <ContentRoot BasePath="_content/Syncfusion.Blazor.Core" Path="C:\Users\slip1\.nuget\packages\syncfusion.blazor.core\19.3.0.44\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Syncfusion.Blazor.Data" Path="C:\Users\slip1\.nuget\packages\syncfusion.blazor.data\19.3.0.44\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Syncfusion.Blazor.Themes" Path="C:\Users\slip1\.nuget\packages\syncfusion.blazor.themes\19.3.0.44\build\..\staticwebassets\" />
-  <ContentRoot BasePath="/" Path="C:\Users\slip1\RiderProjects\Hand_in1\Hand_in1\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/" Path="C:\Users\slip1\RiderProjects\DNP-AssignmentHandin1\Hand_in1\obj\Debug\net5.0\scopedcss\bundle\" />
 </StaticWebAssets>
